@@ -18,7 +18,7 @@
         "space": true,
         "args": "Required",
         "script": "src/install.js",
-        "connections": ["InstallPlugin"]
+        "connections": ["InstallPlugin", "GotoRepo"]
       },
       {
         "id": "UninstallSearch",
