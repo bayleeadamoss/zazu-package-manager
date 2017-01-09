@@ -17,6 +17,7 @@
     "mocha": "^2.5.3"
   },
   "dependencies": {
-    "fuzzyfind": "^2.0.0"
+    "fuzzyfind": "^2.0.0",
+    "node-fetch": "^1.6.3"
   }
 }

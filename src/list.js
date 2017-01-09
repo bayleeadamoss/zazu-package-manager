@@ -1,24 +1,35 @@
 const os = require('os')
 const path = require('path')
 const fuzzyfind = require('fuzzyfind')
-const zazu = require(path.join(os.homedir(), '.zazurc.json'))
+const packages = require('./packages')
 
-module.exports = () => {
+module.exports = ({ cwd }) => {
+  const zazuConfig = require(path.join(os.homedir(), '.zazurc.json'))
+
   return (query, env = {}) => {
-    return new Promise((resolve, reject) => {
-      resolve(fuzzyfind(query, zazu.plugins, {
+    return packages.get(cwd).then((allPackages) => {
+      return zazuConfig.plugins.map((plugin) => {
+        const name = typeof plugin === 'string' ? plugin : plugin.name
+        return allPackages.find((pack) => {
+          return pack.githuburl === name
+        }) || {
+          title: name,
+          githuburl: name,
+        }
+      })
+    }).then((installedPlugins) => {
+      return fuzzyfind(query.trim(), installedPlugins, {
         accessor: (plugin) => {
-          return plugin.title + plugin.description
+          return plugin.githuburl + plugin.title + plugin.description
         },
       }).map((plugin) => {
-        if (typeof plugin !== 'string') plugin = plugin.name
+        const same = plugin.title === plugin.githuburl
         return {
           icon: 'fa-plug',
-          title: plugin,
-          subtitle: 'Click to go to plugin homepage.',
-          value: plugin,
+          title: same ? plugin.title : `${plugin.title} - ${plugin.githuburl}`,
+          value: plugin.githuburl,
         }
-      }))
+      })
     })
   }
 }

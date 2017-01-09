@@ -11,7 +11,8 @@ module.exports = () => {
         const name = typeof plugin === 'string' ? plugin : plugin.name
         return name !== value
       })
-      fs.writeFile(zazuPath, zazuConfig, (err) => {
+      const zazuValue = JSON.stringify(zazuConfig, null, 2)
+      fs.writeFile(zazuPath, zazuValue, (err) => {
         err ? reject(err) : resolve()
       })
     })

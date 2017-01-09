@@ -1,5 +1,16 @@
 {
-  "name": "zazu-package-manager", "blocks": { "input": [
+  "name": "zazu-package-manager",
+  "blocks": {
+    "external": [
+      {
+        "id": "Cache Packages",
+        "type": "ServiceScript",
+        "script": "cachePackages.js",
+        "interval": 1800000,
+        "interval.comment": "30_minutes"
+      }
+    ],
+    "input": [
       {
         "id": "InstallSearch",
         "type": "PrefixScript",
@@ -13,17 +24,17 @@
         "id": "UninstallSearch",
         "type": "PrefixScript",
         "prefix": "uninstall",
-        "space": true,
-        "args": "Required",
-        "script": "src/uninstall.js",
+        "space": false,
+        "args": "Optional",
+        "script": "src/list.js",
         "connections": ["UninstallPlugin"]
       },
       {
         "id": "ListSearch",
         "type": "PrefixScript",
         "prefix": "list",
-        "space": true,
-        "args": "Required",
+        "space": false,
+        "args": "Optional",
         "script": "src/list.js",
         "connections": ["GotoRepo"]
       }

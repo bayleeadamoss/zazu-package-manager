@@ -7,8 +7,9 @@ const zazuConfig = require(zazuPath)
 module.exports = () => {
   return (value, env = {}) => {
     return new Promise((resolve, reject) => {
-      zazuConfig.plugins.add(value)
-      fs.writeFile(zazuPath, zazuConfig, (err) => {
+      zazuConfig.plugins.push(value)
+      const zazuValue = JSON.stringify(zazuConfig, null, 2)
+      fs.writeFile(zazuPath, zazuValue, (err) => {
         err ? reject(err) : resolve()
       })
     })
