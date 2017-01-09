@@ -1,8 +1,8 @@
 {
-  "name": "zazu-template",
+  "name": "zazu-package-manager",
   "version": "1.0.0",
-  "description": "Zazu Template for starting your own plugin.",
-  "main": "zazu.js",
+  "description": "Simple package manager for Zazu.",
+  "main": "zazu.json",
   "scripts": {
     "test": "mocha ./test"
   },
@@ -10,5 +10,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "fuzzyfind": "^2.0.0"
   }
 }

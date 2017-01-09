@@ -1,31 +1,49 @@
 {
-  "name": "zazu-template",
-  "version": "1.0.0",
-  "description": "Zazu Template for starting your own plugin.",
+  "name": "zazu-package-manager",
   "blocks": {
     "input": [
       {
-        "id": "template",
-        "type": "Keyword",
-        "keyword": "template",
-        "title": "Zazu Template",
-        "subtitle": "Goto Zazu Template GitHub Repo",
-        "icon": "fa-files-o",
-        "connections": [
-          "GoHome"
-        ]
+        "id": "Install",
+        "type": "PrefixScript",
+        "prefix": "install",
+        "space": true,
+        "args": "Required",
+        "script": "install.js",
+        "connections": [""]
       },
       {
-        "id": "hello",
-        "type": "RootScript",
-        "script": "src/hello.js"
+        "id": "Uninstall",
+        "type": "PrefixScript",
+        "prefix": "uninstall",
+        "space": true,
+        "args": "Required",
+        "script": "uninstall.js",
+        "connections": [""]
+      },
+      {
+        "id": "List",
+        "type": "PrefixScript",
+        "prefix": "list",
+        "space": true,
+        "args": "Required",
+        "script": "list.js",
+        "connections": ["GotoRepo"]
+      },
+      {
+        "id": "Theme",
+        "type": "PrefixScript",
+        "prefix": "theme",
+        "space": true,
+        "args": "Required",
+        "script": "theme.js",
+        "connections": [""]
       }
     ],
     "output": [
       {
-        "id": "GoHome",
+        "id": "GotoRepo",
         "type": "OpenInBrowser",
-        "url": "https://github.com/tinytacoteam/zazu-template"
+        "url": "https://github.com/{value}"
       }
     ]
   }
