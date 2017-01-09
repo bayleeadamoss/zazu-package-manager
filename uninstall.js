@@ -15,7 +15,7 @@ module.exports = () => {
         return {
           icon: 'fa-plug',
           title: plugin,
-          subtitle: 'Click to go to plugin homepage.',
+          subtitle: 'Click to uninstall plugin',
           value: plugin,
         }
       }))

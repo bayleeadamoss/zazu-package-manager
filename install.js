@@ -11,7 +11,7 @@ module.exports = (pluginContext) => {
         },
       }).map((plugin) => {
         return {
-          icon: 'fa-plug',
+          icon: plugin.type === 'plugin' ? 'fa-plug' : 'fa-paint-brush',
           title: plugin.title,
           subtitle: plugin.description,
           value: plugin.title,

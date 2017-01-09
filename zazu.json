@@ -1,42 +1,31 @@
 {
-  "name": "zazu-package-manager",
-  "blocks": {
-    "input": [
+  "name": "zazu-package-manager", "blocks": { "input": [
       {
-        "id": "Install",
+        "id": "InstallSearch",
         "type": "PrefixScript",
         "prefix": "install",
         "space": true,
         "args": "Required",
         "script": "install.js",
-        "connections": [""]
+        "connections": ["InstallPlugin"]
       },
       {
-        "id": "Uninstall",
+        "id": "UninstallSearch",
         "type": "PrefixScript",
         "prefix": "uninstall",
         "space": true,
         "args": "Required",
         "script": "uninstall.js",
-        "connections": [""]
+        "connections": ["UninstallPlugin"]
       },
       {
-        "id": "List",
+        "id": "ListSearch",
         "type": "PrefixScript",
         "prefix": "list",
         "space": true,
         "args": "Required",
         "script": "list.js",
         "connections": ["GotoRepo"]
-      },
-      {
-        "id": "Theme",
-        "type": "PrefixScript",
-        "prefix": "theme",
-        "space": true,
-        "args": "Required",
-        "script": "theme.js",
-        "connections": [""]
       }
     ],
     "output": [
@@ -44,6 +33,24 @@
         "id": "GotoRepo",
         "type": "OpenInBrowser",
         "url": "https://github.com/{value}"
+      },
+      {
+        "id": "InstallPlugin",
+        "type": "UserScript",
+        "script": "installPlugin.js",
+        "connections": ["Notify"]
+      },
+      {
+        "id": "UninstallPlugin",
+        "type": "UserScript",
+        "script": "uninstallPlugin.js",
+        "connections": ["Notify"]
+      },
+      {
+        "id": "Notify",
+        "type": "SendNotification",
+        "title": "Packages Updated",
+        "message": "Your packages have been updated. Reload your configuration to see your changes."
       }
     ]
   }

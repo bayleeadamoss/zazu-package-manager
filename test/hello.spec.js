@@ -1,21 +1,7 @@
 const expect = require('chai').expect
-const hello = require('../src/hello')()
+const hello = require('../install')()
 
-describe('Hello', () => {
-  describe('.respondsTo', () => {
-    it('responds to "hello"', () => {
-      expect(hello.respondsTo('hello')).to.be.ok
-    })
-
-    it('responds to "hello world"', () => {
-      expect(hello.respondsTo('hello world')).to.be.ok
-    })
-
-    it('does not responds to "meow world"', () => {
-      expect(hello.respondsTo('meow world')).to.not.be.ok
-    })
-  })
-
+describe('Install', () => {
   describe('.search', () => {
     it('does not include a name', () => {
       hello.search('hello').then((results) => {
