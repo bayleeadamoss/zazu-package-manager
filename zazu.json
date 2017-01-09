@@ -6,7 +6,7 @@
         "prefix": "install",
         "space": true,
         "args": "Required",
-        "script": "install.js",
+        "script": "src/install.js",
         "connections": ["InstallPlugin"]
       },
       {
@@ -15,7 +15,7 @@
         "prefix": "uninstall",
         "space": true,
         "args": "Required",
-        "script": "uninstall.js",
+        "script": "src/uninstall.js",
         "connections": ["UninstallPlugin"]
       },
       {
@@ -24,7 +24,7 @@
         "prefix": "list",
         "space": true,
         "args": "Required",
-        "script": "list.js",
+        "script": "src/list.js",
         "connections": ["GotoRepo"]
       }
     ],
@@ -37,13 +37,13 @@
       {
         "id": "InstallPlugin",
         "type": "UserScript",
-        "script": "installPlugin.js",
+        "script": "src/installPlugin.js",
         "connections": ["Notify"]
       },
       {
         "id": "UninstallPlugin",
         "type": "UserScript",
-        "script": "uninstallPlugin.js",
+        "script": "src/uninstallPlugin.js",
         "connections": ["Notify"]
       },
       {
