@@ -1,5 +1,3 @@
-const fs = require('fs')
-const path = require('path')
 const http = require('http')
 
 const packageUrl = 'http://zazuapp.org/api/packages.json'
@@ -22,7 +20,7 @@ const self = {
   },
   get: (cwd) => {
     return packages ? Promise.resolve(packages) : self.refresh(cwd)
-  }
+  },
 }
 
 module.exports = self
