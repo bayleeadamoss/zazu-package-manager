@@ -37,6 +37,24 @@
         "args": "Optional",
         "script": "src/list.js",
         "connections": ["GotoRepo"]
+      },
+      {
+        "id": "ShowConfig",
+        "type": "PrefixScript",
+        "prefix": "config",
+        "space": false,
+        "args": "None",
+        "script": "src/showConfig.js",
+        "connections": ["ShowFile"]
+      },
+      {
+        "id": "OpenConfig",
+        "type": "PrefixScript",
+        "prefix": "config",
+        "space": false,
+        "args": "None",
+        "script": "src/openConfig.js",
+        "connections": ["OpenFile"]
       }
     ],
     "output": [
@@ -62,6 +80,14 @@
         "type": "SendNotification",
         "title": "Packages Updated",
         "message": "Your packages have been updated. Reload your configuration to see your changes."
+      },
+      {
+        "id": "ShowFile",
+        "type": "ShowFile"
+      },
+      {
+        "id": "OpenFile",
+        "type": "OpenFile"
       }
     ]
   }

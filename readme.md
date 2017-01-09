@@ -34,3 +34,10 @@ To list all installed plugins type in `list`, which also accepts an argument.
 Clicking one will go to the plugin homepage.
 
 ![list](./screenshots/list.png)
+
+### Show Config
+
+To open the folder containing the config, or to open the config in your default
+`.json` editor, try `config`:
+
+![config](./screenshots/config.png)
