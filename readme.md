@@ -2,6 +2,18 @@
 
 [![Build Status](https://travis-ci.org/tinytacoteam/zazu-package-manager.svg?branch=master)](https://travis-ci.org/tinytacoteam/zazu-package-manager)
 
+## Installation
+
+Add `tinytacoteam/zazu-package-manager` inside of plugins block of your ~/.zazurc.json file.
+
+```
+{
+  "plugins": [
+    "tinytacoteam/zazu-package-manager"
+  ]
+}
+```
+
 ## Commands
 
 ### Installing
