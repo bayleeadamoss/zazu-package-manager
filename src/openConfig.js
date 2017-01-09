@@ -6,7 +6,7 @@ module.exports = (pluginContext) => {
           icon: 'fa-file-text',
           title: 'Open Zazu Configuration',
           value: '~/.zazurc.json',
-        }
+        },
       ])
     })
   }
