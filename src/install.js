@@ -11,7 +11,7 @@ module.exports = ({ cwd }) => {
 
   return (query, env = {}) => {
     return packages.get(cwd).then((allPackages) => {
-      return packages.filter((plugin) => {
+      return allPackages.filter((plugin) => {
         return !installedPlugins.includes(plugin.githuburl)
       })
     }).then((newPackages) => {
