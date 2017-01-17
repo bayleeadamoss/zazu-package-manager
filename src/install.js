@@ -1,10 +1,9 @@
-const path = require('path')
-const os = require('os')
 const fuzzyfind = require('fuzzyfind')
 const packages = require('./packages')
+const configPath = require('./configPath')
 
 module.exports = ({ cwd }) => {
-  const zazuConfig = require(path.join(os.homedir(), '.zazurc.json'))
+  const zazuConfig = require(configPath)
   const installedPlugins = zazuConfig.plugins.map((plugin) => {
     return typeof plugin === 'string' ? plugin : plugin.name
   })

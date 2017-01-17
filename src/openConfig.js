@@ -1,3 +1,5 @@
+const configPath = require('./configPath')
+
 module.exports = (pluginContext) => {
   return (query, env = {}) => {
     return new Promise((resolve, reject) => {
@@ -5,7 +7,7 @@ module.exports = (pluginContext) => {
         {
           icon: 'fa-file-text',
           title: 'Open Zazu Configuration',
-          value: '~/.zazurc.json',
+          value: configPath,
         },
       ])
     })

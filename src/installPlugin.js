@@ -1,9 +1,7 @@
-const os = require('os')
 const fs = require('fs')
-const path = require('path')
-const zazuPath = path.join(os.homedir(), '.zazurc.json')
-const zazuConfig = require(zazuPath)
 const packages = require('./packages')
+const configPath = require('./configPath')
+const zazuConfig = require(configPath)
 
 module.exports = ({ cwd }) => {
   return (value, env = {}) => {
@@ -19,7 +17,7 @@ module.exports = ({ cwd }) => {
           zazuConfig.plugins.push(plugin.githuburl)
         }
         const zazuValue = JSON.stringify(zazuConfig, null, 2)
-        fs.writeFile(zazuPath, zazuValue, (err) => {
+        fs.writeFile(configPath, zazuValue, (err) => {
           err ? reject(err) : resolve()
         })
       })
