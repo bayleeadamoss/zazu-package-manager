@@ -1,11 +1,8 @@
-const os = require('os')
-const path = require('path')
 const fuzzyfind = require('fuzzyfind')
 const packages = require('./packages')
+const zazuConfig = require(require('./configPath'))
 
 module.exports = ({ cwd }) => {
-  const zazuConfig = require(path.join(os.homedir(), '.zazurc.json'))
-
   return (query, env = {}) => {
     return packages.get(cwd).then((allPackages) => {
       return zazuConfig.plugins.map((plugin) => {
