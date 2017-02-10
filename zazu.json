@@ -5,7 +5,7 @@
       {
         "id": "Cache Packages",
         "type": "ServiceScript",
-        "script": "cachePackages.js",
+        "script": "src/refresh.js",
         "interval": 1800000,
         "interval.comment": "30_minutes"
       }
