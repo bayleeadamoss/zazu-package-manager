@@ -79,7 +79,8 @@
         "id": "Notify",
         "type": "SendNotification",
         "title": "Packages Updated",
-        "message": "Your packages have been updated. Reload your configuration to see your changes."
+        "message": "Your packages have been updated. Reload your configuration to see your changes.",
+        "connections": ["Reload"]
       },
       {
         "id": "ShowFile",
@@ -88,6 +89,10 @@
       {
         "id": "OpenFile",
         "type": "OpenFile"
+      },
+      {
+        "id": "Reload",
+        "type": "ReloadConfig"
       }
     ]
   }
