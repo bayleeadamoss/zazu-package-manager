@@ -1,4 +1,4 @@
-const configPath = require('./configPath')
+const { configPath } = require('./path')
 
 module.exports = (pluginContext) => {
   return (query, env = {}) => {

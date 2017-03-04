@@ -1,6 +1,6 @@
 const fuzzyfind = require('fuzzyfind')
 const packages = require('./packages')
-const configPath = require('./configPath')
+const { configPath } = require('./path')
 
 module.exports = ({ cwd }) => {
   const zazuConfig = require(configPath)
