@@ -1,10 +1,12 @@
 const fs = require('fs')
-const configPath = require('./configPath')
+const rimraf = require('rimraf')
+const path = require('path')
+const { configPath, pluginPath } = require('./path')
 const zazuConfig = require(configPath)
 
 module.exports = () => {
   return (value, env = {}) => {
-    return new Promise((resolve, reject) => {
+    const updateConfig = new Promise((resolve, reject) => {
       zazuConfig.plugins = zazuConfig.plugins.filter((plugin) => {
         const name = typeof plugin === 'string' ? plugin : plugin.name
         return name !== value
@@ -14,5 +16,13 @@ module.exports = () => {
         err ? reject(err) : resolve()
       })
     })
+
+    const deletePlugin = new Promise((resolve, reject) => {
+      rimraf(path.join(pluginPath, value), (err) => {
+        err ? reject(err) : resolve()
+      })
+    })
+
+    return Promise.all([updateConfig, deletePlugin])
   }
 }

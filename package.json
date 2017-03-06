@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "fuzzyfind": "^2.0.0",
-    "node-fetch": "^1.6.3"
+    "node-fetch": "^1.6.3",
+    "rimraf": "^2.6.1"
   }
 }

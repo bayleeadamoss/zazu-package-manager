@@ -1,6 +1,6 @@
 const fs = require('fs')
 const packages = require('./packages')
-const configPath = require('./configPath')
+const { configPath } = require('./path')
 const zazuConfig = require(configPath)
 
 module.exports = ({ cwd }) => {
