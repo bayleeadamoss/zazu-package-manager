@@ -10,6 +10,12 @@ module.exports = ({ cwd }) => {
         return plugin.githuburl === value
       })
     }).then((plugin) => {
+      if (plugin) return plugin
+      return {
+        githuburl: value,
+        type: 'package',
+      }
+    }).then((plugin) => {
       return new Promise((resolve, reject) => {
         if (plugin.type === 'theme') {
           zazuConfig.theme = plugin.githuburl

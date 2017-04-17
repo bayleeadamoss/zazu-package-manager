@@ -21,6 +21,15 @@
         "connections": ["InstallPlugin", "GotoRepo"]
       },
       {
+        "id": "InstallDirect",
+        "type": "PrefixScript",
+        "prefix": "install",
+        "space": true,
+        "args": "Required",
+        "script": "src/installDirect.js",
+        "connections": ["InstallPlugin", "GotoRepo"]
+      },
+      {
         "id": "UninstallSearch",
         "type": "PrefixScript",
         "prefix": "uninstall",

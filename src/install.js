@@ -21,6 +21,7 @@ module.exports = ({ cwd }) => {
       }).map((plugin) => {
         return {
           icon: plugin.type === 'plugin' ? 'fa-plug' : 'fa-paint-brush',
+          id: plugin.title,
           title: plugin.title,
           subtitle: plugin.description,
           value: plugin.githuburl,
