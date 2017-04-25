@@ -23,6 +23,7 @@ module.exports = ({ cwd }) => {
       }).map((plugin) => {
         const same = plugin.title === plugin.githuburl
         return {
+          id: plugin.githuburl,
           icon: 'fa-plug',
           title: same ? plugin.title : `${plugin.title} - ${plugin.githuburl}`,
           value: plugin.githuburl,
