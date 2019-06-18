@@ -1,24 +1,16 @@
-const http = require('http')
+const fetch = require('node-fetch')
 
 const packageUrl = 'http://zazuapp.org/api/packages.json'
 let packages = null
 
 const self = {
-  refresh: (cwd) => {
-    return new Promise((resolve, reject) => {
-      http.get(packageUrl, (response) => {
-        const chunks = []
-        response.on('data', (chunk) => {
-          chunks.push(chunk.toString())
-        })
-        response.on('end', () => {
-          packages = JSON.parse(chunks.join('')).packages
-          resolve(packages)
-        })
-      })
-    })
+  refresh: cwd => {
+    return fetch(packageUrl)
+      .then(res => res.json())
+      .then(result => result.packages)
+      .catch(() => [])
   },
-  get: (cwd) => {
+  get: cwd => {
     return packages ? Promise.resolve(packages) : self.refresh(cwd)
   },
 }
