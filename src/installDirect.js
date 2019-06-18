@@ -1,7 +1,9 @@
+const fs = require('fs')
+const json = require('relaxed-json')
 const { configPath } = require('./path')
 
-module.exports = () => {
-  const zazuConfig = require(configPath)
+module.exports = function installDirect () {
+  const zazuConfig = json.parse(fs.readFileSync(configPath, 'utf-8'))
   const installedPlugins = zazuConfig.plugins.map((plugin) => {
     return typeof plugin === 'string' ? plugin : plugin.name
   })

@@ -1,9 +1,9 @@
 const fs = require('fs')
+const json = require('relaxed-json')
 const packages = require('./packages')
 const { configPath } = require('./path')
-const zazuConfig = require(configPath)
 
-module.exports = ({ cwd }) => {
+module.exports = function installPlugin ({ cwd }) {
   return (value, env = {}) => {
     return packages.get(cwd).then((allPackages) => {
       return allPackages.find((plugin) => {
@@ -17,12 +17,13 @@ module.exports = ({ cwd }) => {
       }
     }).then((plugin) => {
       return new Promise((resolve, reject) => {
+        const zazuConfig = json.parse(fs.readFileSync(configPath, 'utf-8'))
         if (plugin.type === 'theme') {
           zazuConfig.theme = plugin.githuburl
         } else {
           zazuConfig.plugins.push(plugin.githuburl)
         }
-        const zazuValue = JSON.stringify(zazuConfig, null, 2)
+        const zazuValue = json.stringify(zazuConfig, null, 2)
         fs.writeFile(configPath, zazuValue, (err) => {
           err ? reject(err) : resolve()
         })

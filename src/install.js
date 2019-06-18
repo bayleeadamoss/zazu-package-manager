@@ -1,9 +1,11 @@
+const fs = require('fs')
+const json = require('relaxed-json')
 const fuzzyfind = require('fuzzyfind')
 const packages = require('./packages')
 const { configPath } = require('./path')
 
-module.exports = ({ cwd }) => {
-  const zazuConfig = require(configPath)
+module.exports = function install ({ cwd }) {
+  const zazuConfig = json.parse(fs.readFileSync(configPath, 'utf-8'))
   const installedPlugins = zazuConfig.plugins.map((plugin) => {
     return typeof plugin === 'string' ? plugin : plugin.name
   })
